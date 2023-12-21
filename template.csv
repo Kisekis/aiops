@@ -1,0 +1,325 @@
+,EventTemplate
+0,0
+1,ts-cancel-service GET:/api/v1/cancelservice/cancel/{orderId}/{loginId} start
+2,<:PREFIX:> INFO cancel.service.CancelServiceImpl -[getAccount][Get By Id][orderId: <:ORDER ID:>]
+3,<:PREFIX:> INFO cancel.service.CancelServiceImpl -[cancelOrder][Draw Back Money Success]
+4,<:PREFIX:> INFO cancel.service.CancelServiceImpl -[cancelOrder][Cancel Order Success]
+5,<:PREFIX:> INFO cancel.service.CancelServiceImpl -[cancelOrder][Cancel Order, Order found G|H]
+6,<:PREFIX:> INFO cancel.service.CancelServiceImpl -[getOrderByIdFromOrder][Get Order][orderId: <:ORDER ID:>]
+7,<:PREFIX:> INFO cancel.controller.CancelController -[cancelTicket][Cancel Ticket, Verify Success]
+8,<:PREFIX:> INFO cancel.controller.CancelController -[cancelTicket][Cancel Ticket][info: <:ORDER ID:>]
+9,ts-cancel-service GET:/api/v1/cancelservice/cancel/{orderId}/{loginId} end
+10,ts-cancel-service SpringAsync start
+11,<:PREFIX:> INFO cancel.async.AsyncTask -[drawbackMoney][Draw Back Money]
+12,ts-cancel-service SpringAsync end
+13,ts-cancel-service /api/v1/inside pay service/inside payment/drawback/<:ORDER ID:>/0.00 <:*:>
+14,<:PREFIX:> INFO c.n.l.DynamicServerListLoadBalancer -DynamicServerListLoadBalancer for client <:*:> initialized: <:*:> list of <:*:> balancer stats=Zone stats: {unknown=[Zone:unknown; Instance count:1; Active connections count: 0; Circuit breaker tripped count: 0; Active connections per server: 0.0;] },Server stats: <:*:> Zone:UNKNOWN; Total Requests:0; Successive connection failure:0; Total blackout seconds:0; Last connection made:Thu Jan 01 08:00:00 CST 1970; First connection made: Thu Jan 01 08:00:00 CST 1970; Active Connections:0; total failure count in last (1000) msecs:0; average resp time:0.0; 90 percentile resp time:0.0; 95 percentile resp time:0.0; min resp time:0.0; max resp time:0.0; stddev resp time:0.0] <:*:>
+15,<:PREFIX:> INFO c.n.config.ChainedDynamicProperty -Flipping property: <:*:> to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+16,<:PREFIX:> INFO c.n.l.DynamicServerListLoadBalancer -Using serverListUpdater PollingServerListUpdater
+17,<:PREFIX:> INFO c.n.loadbalancer.BaseLoadBalancer -Client: <:*:> instantiated a LoadBalancer: <:*:> list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+18,ts-inside-payment-service GET:/api/v1/inside pay service/inside payment/drawback/{userId}/{money} <:*:>
+19,<:PREFIX:> INFO i.controller.InsidePaymentController -[drawBack][draw back payment][userId: <:ORDER ID:>, money: 0.00]
+20,ts-inside-payment-service HikariCP/Connection/getConnection start
+21,ts-inside-payment-service HikariCP/Connection/getConnection end
+22,ts-inside-payment-service Mysql/JDBI/PreparedStatement/executeQuery start
+23,ts-inside-payment-service Mysql/JDBI/PreparedStatement/executeQuery end
+24,ts-inside-payment-service Mysql/JDBI/PreparedStatement/executeUpdate start
+25,ts-inside-payment-service Mysql/JDBI/PreparedStatement/executeUpdate end
+26,ts-inside-payment-service Mysql/JDBI/Connection/commit start
+27,ts-inside-payment-service Mysql/JDBI/Connection/commit end
+28,ts-inside-payment-service HikariCP/Connection/close start
+29,ts-inside-payment-service HikariCP/Connection/close end
+30,ts-cancel-service /api/v1/orderservice/order/<:ORDER ID:> start
+31,ts-cancel-service /api/v1/orderservice/order/<:ORDER ID:> end
+32,ts-order-service GET:/api/v1/orderservice/order/{orderId} start
+33,<:PREFIX:> INFO order.service.OrderServiceImpl -[getOrderById][Get Order By ID Success][OrderId: <:ORDER ID:>]
+34,<:PREFIX:> INFO order.controller.OrderController -[getOrderById][Get Order By Id][OrderId: <:ORDER ID:>]
+35,ts-order-service GET:/api/v1/orderservice/order/{orderId} end
+36,ts-order-service HikariCP/Connection/getConnection start
+37,ts-order-service HikariCP/Connection/getConnection end
+38,ts-order-service Mysql/JDBI/PreparedStatement/executeQuery start
+39,ts-order-service Mysql/JDBI/PreparedStatement/executeQuery end
+40,ts-order-service Mysql/JDBI/Connection/commit start
+41,ts-order-service Mysql/JDBI/Connection/commit end
+42,ts-order-service HikariCP/Connection/close start
+43,ts-order-service HikariCP/Connection/close end
+44,ts-cancel-service /api/v1/userservice/users/id/<:ORDER ID:> start
+45,ts-cancel-service /api/v1/userservice/users/id/<:ORDER ID:> end
+46,ts-user-service GET:/api/v1/userservice/users/id/{userId} start
+47,<:PREFIX:> INFO user.controller.UserController -[getUserByUserId][Get user by user id][UserId: <:ORDER ID:>]
+48,ts-user-service GET:/api/v1/userservice/users/id/{userId} end
+49,ts-user-service HikariCP/Connection/getConnection start
+50,ts-user-service HikariCP/Connection/getConnection end
+51,ts-user-service Mysql/JDBI/PreparedStatement/executeQuery start
+52,ts-user-service Mysql/JDBI/PreparedStatement/executeQuery end
+53,ts-user-service HikariCP/Connection/close start
+54,ts-user-service HikariCP/Connection/close end
+55,<:PREFIX:> INFO cancel.async.AsyncTask -[cancelFromOrder][Change Order Status]
+56,<:PREFIX:> ERROR cancel.async.AsyncTask -[Cancel Order Service] Delay Process，Wrong Cancel Process
+57,ts-cancel-service /api/v1/orderservice/order start
+58,ts-cancel-service /api/v1/orderservice/order end
+59,ts-order-service PUT:/api/v1/orderservice/order start
+60,<:PREFIX:> INFO order.service.OrderServiceImpl -[saveChanges][Modify Order Success][OrderId: <:ORDER ID:>]
+61,<:PREFIX:> INFO order.controller.OrderController -[saveChanges][Save Order Info][OrderId:<:ORDER ID:>]
+62,ts-order-service PUT:/api/v1/orderservice/order end
+63,ts-order-service Mysql/JDBI/PreparedStatement/executeUpdate start
+64,ts-order-service Mysql/JDBI/PreparedStatement/executeUpdate end
+65,ts-preserve-service POST:/api/v1/preserveservice/preserve start
+66,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[getAccount][Cancel Order Service][Get Order By Id]
+67,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 7][Add Consign][Consign Success]
+68,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[createConsign][Preserve Service][Add Condign
+69,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -CONSIGN INFO : Consign(id=null, orderId=<:ORDER ID:>, accountId=<:ORDER ID:>, handleDate=2023-12-19, targetDate=2023-12-19, from=shanghai, to=suzhou, consignee=Nime, phone=1234567890, weight=100.0, isWithin=false)
+70,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 6][Buy Food][Buy Food Success]
+71,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[createFoodOrder][Preserve Service][Add Preserve food Order]
+72,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 5][Buy Assurance][Preserve Buy Assurance Success]
+73,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 4][Do Order][Do Order Complete]
+74,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[addAssuranceForOrder][Preserve Service][Add Assurance Type For Order]
+75,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 4][Do Order][Order Price][Price is: 50.0]
+76,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[createOrder][Preserve Other Service][Get Contacts By Id]
+77,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 4][Do Order][Travel Date][Date is: 2023-12-19]
+78,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 3][Check tickets num][Tickets Enough]
+79,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[getTripAllDetailInformation][Preserve Other Service][Get Trip All Detail Information]
+80,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 3][Check tickets num][TripId: D1345]
+81,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 2][Find contacts Complete][ContactsId: <:ORDER ID:>]
+82,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[getContactsById][Preserve Other Service][Get Contacts By Id is]
+83,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[preserve][Step 1][Check Security Complete][AccountId: <:ORDER ID:>]
+84,<:PREFIX:> INFO p.controller.PreserveController -[preserve][Preserve Account order][from shanghai to suzhou at 2023-12-19]
+85,<:PREFIX:> INFO preserve.service.PreserveServiceImpl -[checkSecurity][Preserve Other Service][Check Account Security]
+86,ts-preserve-service POST:/api/v1/preserveservice/preserve end
+87,ts-preserve-service /api/v1/securityservice/securityConfigs/<:ORDER ID:> start
+88,ts-preserve-service /api/v1/securityservice/securityConfigs/<:ORDER ID:> end
+89,ts-security-service GET:/api/v1/securityservice/securityConfigs/{accountId} start
+90,<:PREFIX:> INFO security.service.SecurityServiceImpl -[check][Max][Max In One Hour: 2147483647 Max Not Use: 2147483647]
+91,<:PREFIX:> INFO security.service.SecurityServiceImpl -[getSecurityOrderOtherInfoFromOrder][Get Order Other Info For Security][Last One Hour: 1 Total Valid Order: 1]
+92,<:PREFIX:> INFO security.service.SecurityServiceImpl -[getSecurityOrderInfoFromOrder][Get Order Info For Security][Last One Hour: 6 Total Valid Order: 2]
+93,<:PREFIX:> INFO s.controller.SecurityController -[check][Check Security][Check Account Id: <:ORDER ID:>]
+94,ts-security-service GET:/api/v1/securityservice/securityConfigs/{accountId} end
+95,ts-security-service /api/v1/orderservice/order/security/Tue Dec 19 14:27:28 CST 2023/<:ORDER ID:> <:*:>
+96,ts-order-service GET:/api/v1/orderservice/order/security/{checkDate}/{accountId} start
+97,<:PREFIX:> INFO order.controller.OrderController -[checkSecurityAboutOrder][Security Info Get][AccountId:<:ORDER ID:>]
+98,ts-order-service GET:/api/v1/orderservice/order/security/{checkDate}/{accountId} end
+99,ts-security-service /api/v1/orderOtherService/orderOther/security/Tue Dec 19 14:27:28 CST 2023/<:ORDER ID:> <:*:>
+100,ts-order-other-service GET:/api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId} start
+101,<:PREFIX:> INFO o.controller.OrderOtherController -[checkSecurityAboutOrder][Security Info Get][CheckDate:Tue Dec 19 14:27:28 CST 2023 , AccountId:<:ORDER ID:>]
+102,ts-order-other-service GET:/api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId} end
+103,ts-order-other-service HikariCP/Connection/getConnection start
+104,ts-order-other-service HikariCP/Connection/getConnection end
+105,ts-order-other-service Mysql/JDBI/PreparedStatement/executeQuery start
+106,ts-order-other-service Mysql/JDBI/PreparedStatement/executeQuery end
+107,ts-order-other-service HikariCP/Connection/close start
+108,ts-order-other-service HikariCP/Connection/close end
+109,ts-security-service HikariCP/Connection/getConnection start
+110,ts-security-service HikariCP/Connection/getConnection end
+111,ts-security-service Mysql/JDBI/PreparedStatement/executeQuery start
+112,ts-security-service Mysql/JDBI/PreparedStatement/executeQuery end
+113,ts-security-service HikariCP/Connection/close start
+114,ts-security-service HikariCP/Connection/close end
+115,ts-preserve-service /api/v1/contactservice/contacts/<:ORDER ID:> start
+116,ts-preserve-service /api/v1/contactservice/contacts/<:ORDER ID:> end
+117,ts-contacts-service GET:/api/v1/contactservice/contacts/{id} start
+118,<:PREFIX:> INFO c.controller.ContactsController -[ContactsService][VerifyLogin Success]
+119,<:PREFIX:> INFO contacts.service.ContactsServiceImpl -FIND CONTACTS BY ID: <:ORDER ID:>
+120,<:PREFIX:> INFO c.controller.ContactsController -[ContactsService][Contacts Id Print][id: <:ORDER ID:>]
+121,ts-contacts-service GET:/api/v1/contactservice/contacts/{id} end
+122,ts-contacts-service HikariCP/Connection/getConnection start
+123,ts-contacts-service HikariCP/Connection/getConnection end
+124,ts-contacts-service Mysql/JDBI/PreparedStatement/executeQuery start
+125,ts-contacts-service Mysql/JDBI/PreparedStatement/executeQuery end
+126,ts-contacts-service Mysql/JDBI/Connection/commit start
+127,ts-contacts-service Mysql/JDBI/Connection/commit end
+128,ts-contacts-service HikariCP/Connection/close start
+129,ts-contacts-service HikariCP/Connection/close end
+130,ts-preserve-service /api/v1/travelservice/trip detail start
+131,ts-preserve-service /api/v1/travelservice/trip detail end
+132,ts-travel-service POST:/api/v1/travelservice/trip detail start
+133,<:PREFIX:> INFO travel.service.TravelServiceImpl -[getTickets][Calculate distance][calculate <:*:> time: Sat May 04 <:*:> CST 2013]
+134,<:PREFIX:> INFO travel.service.TravelServiceImpl -[getRestTicketNumber][Get Rest tickets num][num is: Response(status=1, msg=Get Left Ticket of Internal Success, data=1073741823)]
+135,<:PREFIX:> INFO travel.service.TravelServiceImpl -[getRestTicketNumber][Seat request][request: Seat(travelDate=2023-12-19, trainNumber=D1345, startStation=shanghai, destStation=suzhou, <:*:> totalNum=2147483647, stations=[shanghai, suzhou])]
+136,<:PREFIX:> INFO travel.service.TravelServiceImpl -[getTickets][before get basic][trip: Trip(id=<:ORDER ID:>, tripId=D1345, trainTypeName=DongCheOne, routeId=<:ORDER ID:>, startStationName=shanghai, stationsName=suzhou, terminalStationName=taiyuan, startTime=2013-05-04 07:00:00, endTime=2013-05-04 19:59:52)]
+137,<:PREFIX:> INFO travel.service.TravelServiceImpl <:*:> date][y: 2023][m:11][d: 19]
+138,<:PREFIX:> INFO travel.controller.TravelController -[getTripAllDetailInfo][Get trip detail][TripId: D1345]
+139,ts-travel-service POST:/api/v1/travelservice/trip detail end
+140,ts-travel-service HikariCP/Connection/getConnection start
+141,ts-travel-service HikariCP/Connection/getConnection end
+142,ts-travel-service Mysql/JDBI/PreparedStatement/executeQuery start
+143,ts-travel-service Mysql/JDBI/PreparedStatement/executeQuery end
+144,ts-travel-service /api/v1/basicservice/basic/travel start
+145,ts-travel-service /api/v1/basicservice/basic/travel end
+146,ts-basic-service POST:/api/v1/basicservice/basic/travel start
+147,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[queryForTravel][all done][result: TravelResult(status=true, percent=1.0, trainType=TrainType(id=<:ORDER ID:>, name=DongCheOne, economyClass=2147483647, confortClass=2147483647, averageSpeed=180), route=Route(id=<:ORDER ID:>, stations=[shanghai, suzhou], distances=[0, 50], startStation=shanghai, endStation=suzhou), prices={confortClass=50.0, economyClass=22.5})]
+148,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[queryPriceConfigByRouteIdAndTrainType][Response Resutl to String][result: Response(status=1, msg=Success, data={id=<:ORDER ID:>, trainType=DongCheOne, routeId=<:ORDER ID:>, basicPriceRate=0.45, firstClassPriceRate=1.0})]
+149,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[queryForTravel][query start index and end index][indexStart: 0 indexEnd: 1]
+150,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[queryForTravel][query stations and distances][stations: [shanghai, suzhou] distances: [0, 50]]
+151,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[queryPriceConfigByRouteIdAndTrainType][Query For Price Config][RouteId: <:ORDER ID:> ,TrainType: DongCheOne]
+152,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[getRouteByRouteId][Get Route By Id][Success]
+153,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[getRouteByRouteId][Get Route By Id][Route ID：<:ORDER ID:>]
+154,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[queryTrainTypeByName][Query Train Type][Train Type name: DongCheOne]
+155,<:PREFIX:> INFO f.m.service.BasicServiceImpl -[checkStationExists][Check Station Exists][stationName: <:*:>
+156,<:PREFIX:> INFO f.m.controller.BasicController -[queryForTravel][Query for travel][Travel: Travel(trip=Trip(id=<:ORDER ID:>, tripId=D1345, trainTypeName=DongCheOne, routeId=<:ORDER ID:>, startStationName=shanghai, stationsName=suzhou, terminalStationName=taiyuan, startTime=2013-05-04 07:00:00, endTime=2013-05-04 19:59:52), startPlace=shanghai, endPlace=suzhou, departureTime=2023-12-19)]
+157,ts-basic-service POST:/api/v1/basicservice/basic/travel end
+158,ts-basic-service /api/v1/stationservice/stations/id/shanghai start
+159,ts-basic-service /api/v1/stationservice/stations/id/shanghai end
+160,ts-station-service GET:/api/v1/stationservice/stations/id/{stationNameForId} start
+161,<:PREFIX:> INFO f.m.controller.StationController -[queryForId][Query for station id][StationName: <:*:>
+162,ts-station-service GET:/api/v1/stationservice/stations/id/{stationNameForId} end
+163,ts-station-service HikariCP/Connection/getConnection start
+164,ts-station-service HikariCP/Connection/getConnection end
+165,ts-station-service Mysql/JDBI/PreparedStatement/executeQuery start
+166,ts-station-service Mysql/JDBI/PreparedStatement/executeQuery end
+167,ts-station-service HikariCP/Connection/close start
+168,ts-station-service HikariCP/Connection/close end
+169,ts-basic-service /api/v1/stationservice/stations/id/suzhou start
+170,ts-basic-service /api/v1/stationservice/stations/id/suzhou end
+171,ts-basic-service /api/v1/trainservice/trains/byName/DongCheOne start
+172,ts-basic-service /api/v1/trainservice/trains/byName/DongCheOne end
+173,ts-train-service GET:/api/v1/trainservice/trains/byName/{name} start
+174,<:PREFIX:> INFO train.controller.TrainController -[retrieveByName][Retrieve train][TrainTypeName: DongCheOne]
+175,ts-train-service GET:/api/v1/trainservice/trains/byName/{name} end
+176,ts-train-service HikariCP/Connection/getConnection start
+177,ts-train-service HikariCP/Connection/getConnection end
+178,ts-train-service Mysql/JDBI/PreparedStatement/executeQuery start
+179,ts-train-service Mysql/JDBI/PreparedStatement/executeQuery end
+180,ts-train-service HikariCP/Connection/close start
+181,ts-train-service HikariCP/Connection/close end
+182,ts-basic-service /api/v1/routeservice/routes/<:ORDER ID:> start
+183,ts-basic-service /api/v1/routeservice/routes/<:ORDER ID:> end
+184,ts-route-service GET:/api/v1/routeservice/routes/{routeId} start
+185,<:PREFIX:> INFO route.controller.RouteController -[getRouteById][Query route by id][RouteId: <:ORDER ID:>]
+186,ts-route-service GET:/api/v1/routeservice/routes/{routeId} end
+187,ts-route-service HikariCP/Connection/getConnection start
+188,ts-route-service HikariCP/Connection/getConnection end
+189,ts-route-service Mysql/JDBI/PreparedStatement/executeQuery start
+190,ts-route-service Mysql/JDBI/PreparedStatement/executeQuery end
+191,ts-route-service Mysql/JDBI/Connection/commit start
+192,ts-route-service Mysql/JDBI/Connection/commit end
+193,ts-route-service HikariCP/Connection/close start
+194,ts-route-service HikariCP/Connection/close end
+195,ts-basic-service /api/v1/priceservice/prices/<:ORDER ID:>/DongCheOne start
+196,ts-basic-service /api/v1/priceservice/prices/<:ORDER ID:>/DongCheOne end
+197,ts-price-service GET:/api/v1/priceservice/prices/{routeId}/{trainType} start
+198,<:PREFIX:> INFO price.service.PriceServiceImpl -[findByRouteIdAndTrainType][Route: <:ORDER ID:> , Train Type: DongCheOne]
+199,<:PREFIX:> INFO price.controller.PriceController -[findByRouteIdAndTrainType][Query price][RouteId: <:ORDER ID:>, TrainType: DongCheOne]
+200,ts-price-service GET:/api/v1/priceservice/prices/{routeId}/{trainType} end
+201,ts-price-service HikariCP/Connection/getConnection start
+202,ts-price-service HikariCP/Connection/getConnection end
+203,ts-price-service Mysql/JDBI/PreparedStatement/executeQuery start
+204,ts-price-service Mysql/JDBI/PreparedStatement/executeQuery end
+205,ts-price-service HikariCP/Connection/close start
+206,ts-price-service HikariCP/Connection/close end
+207,ts-travel-service /api/v1/seatservice/seats/left tickets start
+208,ts-travel-service /api/v1/seatservice/seats/left tickets end
+209,ts-seat-service POST:/api/v1/seatservice/seats/left tickets start
+210,<:PREFIX:> INFO seat.service.SeatServiceImpl -[getDirectProportion][Configs is : Config(name=DirectTicketAllocationProportion, value=0.5, description=Allocation Proportion Of The Direct Ticket - From Start To End)]
+211,<:PREFIX:> INFO seat.service.SeatServiceImpl -[getLeftTicketOfInterval][Get Order tickets result][result is <200,Response(status=0, msg=Order is Null., data=null),[Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Type:"application/json", Transfer-Encoding:"chunked", Date:"Tue, 19 Dec 2023 06:27:28 GMT", Keep-Alive:"timeout=60", Connection:"keep-alive"]>]
+212,<:PREFIX:> INFO seat.service.SeatServiceImpl -[getLeftTicketOfInterval][Seat request][request:Seat(travelDate=2023-12-19, trainNumber=D1345, startStation=shanghai, destStation=suzhou, <:*:> totalNum=2147483647, stations=[shanghai, suzhou])]
+213,<:PREFIX:> INFO seat.service.SeatServiceImpl -[getLeftTicketOfInterval][TrainNumber start with G|D][trainNumber:D1345]
+214,<:PREFIX:> INFO seat.controller.SeatController -[getLeftTicketOfInterval][Get left ticket of interval][TravelDate: 2023-12-19,TrainNumber: D1345,SeatType: <:*:>
+215,ts-seat-service POST:/api/v1/seatservice/seats/left tickets end
+216,ts-seat-service /api/v1/orderservice/order/tickets start
+217,ts-seat-service /api/v1/orderservice/order/tickets end
+218,ts-order-service POST:/api/v1/orderservice/order/tickets start
+219,<:PREFIX:> WARN order.service.OrderServiceImpl -[getSoldTickets][Seat][Left ticket info is empty][seat from date: 2023-12-19, train number: D1345]
+220,<:PREFIX:> INFO order.controller.OrderController -[getSoldTickets][Get Sold Ticket][Travel Date: 2023-12-19]
+221,ts-order-service POST:/api/v1/orderservice/order/tickets end
+222,ts-seat-service /api/v1/configservice/configs/DirectTicketAllocationProportion start
+223,ts-seat-service /api/v1/configservice/configs/DirectTicketAllocationProportion end
+224,ts-config-service GET:/api/v1/configservice/configs/{configName} start
+225,<:PREFIX:> INFO config.service.ConfigServiceImpl -[query][Query config success][config name: DirectTicketAllocationProportion]
+226,<:PREFIX:> INFO config.controller.ConfigController -[retrieve][Retrieve config][configName: DirectTicketAllocationProportion]
+227,ts-config-service GET:/api/v1/configservice/configs/{configName} end
+228,ts-config-service HikariCP/Connection/getConnection start
+229,ts-config-service HikariCP/Connection/getConnection end
+230,ts-config-service Mysql/JDBI/PreparedStatement/executeQuery start
+231,ts-config-service Mysql/JDBI/PreparedStatement/executeQuery end
+232,ts-config-service HikariCP/Connection/close start
+233,ts-config-service HikariCP/Connection/close end
+234,ts-travel-service HikariCP/Connection/close start
+235,ts-travel-service HikariCP/Connection/close end
+236,ts-preserve-service /api/v1/basicservice/basic/travel start
+237,ts-preserve-service /api/v1/basicservice/basic/travel end
+238,<:PREFIX:> INFO f.m.controller.BasicController -[queryForTravel][Query for travel][Travel: Travel(trip=Trip(id=<:ORDER ID:>, tripId=D1345, trainTypeName=DongCheOne, routeId=<:ORDER ID:>, startStationName=shanghai, stationsName=suzhou, terminalStationName=taiyuan, startTime=2013-05-04 07:00:00, endTime=2013-05-04 19:59:52), startPlace=shanghai, endPlace=suzhou, departureTime=2023-12-19 14:27:28)]
+239,ts-preserve-service /api/v1/seatservice/seats start
+240,ts-preserve-service /api/v1/seatservice/seats end
+241,ts-seat-service POST:/api/v1/seatservice/seats start
+242,<:PREFIX:> INFO seat.service.SeatServiceImpl -[distributeSeat][Assign new tickets][Use a new seat number][seat number:1920582312]
+243,<:PREFIX:> INFO seat.service.SeatServiceImpl -[distributeSeat][Left ticket info][info is : Response(status=0, msg=Order is Null., data=null)]
+244,<:PREFIX:> INFO seat.controller.SeatController -[distributeSeat][Create seat][TravelDate: 2023-12-19,TrainNumber: D1345,SeatType: 2]
+245,<:PREFIX:> INFO seat.service.SeatServiceImpl -[distributeSeat][TrainNumber start][G or D]
+246,ts-seat-service POST:/api/v1/seatservice/seats end
+247,ts-preserve-service /api/v1/orderservice/order start
+248,ts-preserve-service /api/v1/orderservice/order end
+249,ts-order-service POST:/api/v1/orderservice/order start
+250,<:PREFIX:> INFO order.service.OrderServiceImpl -[create][Order Create Success][Order Price][OrderId:<:ORDER ID:> , Price: 50.0]
+251,<:PREFIX:> INFO order.service.OrderServiceImpl -[create][Create Order][Ready to Create Order]
+252,<:PREFIX:> INFO order.controller.OrderController -[createNewOrder][Create Order][from shanghai to suzhou at 2023-12-19]
+253,ts-order-service POST:/api/v1/orderservice/order end
+254,ts-preserve-service /api/v1/assuranceservice/assurances/1/<:ORDER ID:> start
+255,ts-preserve-service /api/v1/assuranceservice/assurances/1/<:ORDER ID:> end
+256,ts-assurance-service GET:/api/v1/assuranceservice/assurances/{typeIndex}/{orderId} start
+257,<:PREFIX:> INFO a.service.AssuranceServiceImpl -[create][AddAssurance][Success]
+258,<:PREFIX:> INFO a.controller.AssuranceController -[createNewAssurance][Create new assurance][typeIndex: 1, orderId: <:ORDER ID:>]
+259,ts-assurance-service GET:/api/v1/assuranceservice/assurances/{typeIndex}/{orderId} end
+260,ts-assurance-service HikariCP/Connection/getConnection start
+261,ts-assurance-service HikariCP/Connection/getConnection end
+262,ts-assurance-service Mysql/JDBI/PreparedStatement/executeQuery start
+263,ts-assurance-service Mysql/JDBI/PreparedStatement/executeQuery end
+264,ts-assurance-service Mysql/JDBI/PreparedStatement/executeUpdate start
+265,ts-assurance-service Mysql/JDBI/PreparedStatement/executeUpdate end
+266,ts-assurance-service Mysql/JDBI/Connection/commit start
+267,ts-assurance-service Mysql/JDBI/Connection/commit end
+268,ts-assurance-service HikariCP/Connection/close start
+269,ts-assurance-service HikariCP/Connection/close end
+270,ts-preserve-service /api/v1/foodservice/orders start
+271,ts-preserve-service /api/v1/foodservice/orders end
+272,ts-food-service POST:/api/v1/foodservice/orders start
+273,<:PREFIX:> INFO foodsearch.mq.RabbitSend -Send info to mq:{"orderId":"<:ORDER ID:>","foodName":"Big Burger","storeName":null,"stationName":null}
+274,<:PREFIX:> INFO foodsearch.service.FoodServiceImpl -[createFoodOrder][AddFoodOrder, delivery info send to mq][delivery info: {"orderId":"<:ORDER ID:>","foodName":"Big Burger","storeName":null,"stationName":null}]
+275,<:PREFIX:> INFO foodsearch.service.FoodServiceImpl -[createFoodOrder][AddFoodOrder Success]
+276,<:PREFIX:> INFO foodsearch.controller.FoodController -[createFoodOrder][Try to Create a FoodOrder!]
+277,ts-food-service POST:/api/v1/foodservice/orders end
+278,ts-food-service HikariCP/Connection/getConnection start
+279,ts-food-service HikariCP/Connection/getConnection end
+280,ts-food-service Mysql/JDBI/PreparedStatement/executeQuery start
+281,ts-food-service Mysql/JDBI/PreparedStatement/executeQuery end
+282,ts-food-service Mysql/JDBI/PreparedStatement/executeUpdate start
+283,ts-food-service Mysql/JDBI/PreparedStatement/executeUpdate end
+284,ts-food-service Mysql/JDBI/Connection/commit start
+285,ts-food-service Mysql/JDBI/Connection/commit end
+286,ts-food-service RabbitMQ/Topic/Queue/food delivery/Producer start
+287,ts-food-service RabbitMQ/Topic/Queue/food delivery/Producer end
+288,ts-delivery-service RabbitMQ/Topic/Queue/food delivery/Consumer start
+289,ts-delivery-service RabbitMQ/Topic/Queue/food delivery/Consumer end
+290,ts-food-service HikariCP/Connection/close start
+291,ts-food-service HikariCP/Connection/close end
+292,ts-preserve-service /api/v1/consignservice/consigns start
+293,ts-preserve-service /api/v1/consignservice/consigns end
+294,ts-consign-service POST:/api/v1/consignservice/consigns start
+295,<:PREFIX:> INFO consign.service.ConsignServiceImpl -[insertConsignRecord][SAVE consign result][result: ConsignRecord(id=<:ORDER ID:>, orderId=<:ORDER ID:>, accountId=<:ORDER ID:>, handleDate=2023-12-19, targetDate=2023-12-19, from=shanghai, to=suzhou, consignee=Nime, phone=1234567890, weight=100.0, price=404.0)]
+296,<:PREFIX:> INFO consign.service.ConsignServiceImpl -[insertConsignRecord][SAVE consign info][consignRecord : ConsignRecord(id=<:ORDER ID:>, orderId=<:ORDER ID:>, accountId=<:ORDER ID:>, handleDate=2023-12-19, targetDate=2023-12-19, from=shanghai, to=suzhou, consignee=Nime, phone=1234567890, weight=100.0, price=404.0)]
+297,<:PREFIX:> INFO consign.controller.ConsignController -[insertConsign][Insert consign record][id:null]
+298,<:PREFIX:> INFO consign.service.ConsignServiceImpl -[insertConsignRecord][Insert Start][consignRequest.getOrderId: <:ORDER ID:>]
+299,<:PREFIX:> INFO consign.service.ConsignServiceImpl -[insertConsignRecord][Insert Info][handle date: 2023-12-19, target date: 2023-12-19]
+300,ts-consign-service POST:/api/v1/consignservice/consigns end
+301,ts-consign-service /api/v1/consignpriceservice/consignprice/100.0/false start
+302,ts-consign-service /api/v1/consignpriceservice/consignprice/100.0/false end
+303,ts-consign-price-service GET:/api/v1/consignpriceservice/consignprice/{weight}/{isWithinRegion} start
+304,<:PREFIX:> INFO c.controller.ConsignPriceController -[getPriceByWeightAndRegion][Get price by weight and region][weight: 100.0, region: false]
+305,ts-consign-price-service GET:/api/v1/consignpriceservice/consignprice/{weight}/{isWithinRegion} end
+306,ts-consign-price-service HikariCP/Connection/getConnection start
+307,ts-consign-price-service HikariCP/Connection/getConnection end
+308,ts-consign-price-service Mysql/JDBI/PreparedStatement/executeQuery start
+309,ts-consign-price-service Mysql/JDBI/PreparedStatement/executeQuery end
+310,ts-consign-price-service HikariCP/Connection/close start
+311,ts-consign-price-service HikariCP/Connection/close end
+312,ts-consign-service HikariCP/Connection/getConnection start
+313,ts-consign-service HikariCP/Connection/getConnection end
+314,ts-consign-service Mysql/JDBI/PreparedStatement/executeQuery start
+315,ts-consign-service Mysql/JDBI/PreparedStatement/executeQuery end
+316,ts-consign-service Mysql/JDBI/PreparedStatement/executeUpdate start
+317,ts-consign-service Mysql/JDBI/PreparedStatement/executeUpdate end
+318,ts-consign-service Mysql/JDBI/Connection/commit start
+319,ts-consign-service Mysql/JDBI/Connection/commit end
+320,ts-consign-service HikariCP/Connection/close start
+321,ts-consign-service HikariCP/Connection/close end
+322,ts-preserve-service /api/v1/userservice/users/id/<:ORDER ID:> start
+323,ts-preserve-service /api/v1/userservice/users/id/<:ORDER ID:> end
